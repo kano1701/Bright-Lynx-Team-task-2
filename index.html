@@ -14,7 +14,7 @@
 		{
 			var startPoint = document.getElementById('startPoint').value;
 			var x = startPoint.charAt(0).toUpperCase();
-			var y = startPoint.charAt(1);
+			var y = Number(startPoint.charAt(1));
 			switch(x){
 				case 'A':
 				x = 1;
@@ -42,29 +42,21 @@
 				break;
 			}
 
-			x1 = x + 1; //x4
-			y1 = y + 2; //y8
+			document.write("\n"+x+":"+y);
 
-			x2 = x + 2; //x3
-			y2 = y + 1; //y7
-
-			x3 = x + 2;
-			y3 = y - 1; //y6
-
-			x4 = x + 1; 
-			y4 = y - 2; //y5
-
-			x5 = x - 1; //x8
-			y5 = y - 2; 
-
-			x6 = x - 2; //x7
-			y6 = y - 1; 
-
-			x7 = x - 2;
-			y7 = y + 1;
-
-			x8 = x - 1;
-			y8 = y + 2;
+			var newPoints = {};
+			newPoints.point1 = [x+1, y+2];
+			newPoints.point2 = [x+2, y+1];
+			newPoints.point3 = [x+2, y-1];
+			newPoints.point4 = [x+1, y-2];
+			newPoints.point5 = [x-1, y-2];
+			newPoints.point6 = [x-2, y-1];
+			newPoints.point7 = [x-2, y+1];
+			newPoints.point8 = [x-1, y+2];
+			for(var i = 1; i < 9; i++){
+				var key = "point"+i;
+				document.write("\n"+newPoints[key]);
+			}
 		}
 	</script>
 </body>
