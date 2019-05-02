@@ -42,8 +42,6 @@
 				break;
 			}
 
-			document.write("\n"+x+":"+y);
-
 			var newPoints = {};
 			newPoints.point1 = [x+1, y+2];
 			newPoints.point2 = [x+2, y+1];
@@ -53,9 +51,13 @@
 			newPoints.point6 = [x-2, y-1];
 			newPoints.point7 = [x-2, y+1];
 			newPoints.point8 = [x-1, y+2];
+			var key = "point"+1;
+			var Points = {};
 			for(var i = 1; i < 9; i++){
 				var key = "point"+i;
-				document.write("\n"+newPoints[key]);
+				if ((newPoints[key][0]>0 && newPoints[key][1]>0) && (newPoints[key][0]<9 && newPoints[key][1]<9)){
+					document.write("Подходит "+newPoints[key]);
+				}
 			}
 		}
 	</script>
