@@ -8,58 +8,6 @@
 	<p><b>Исходное положение:</b></p>
 	<input id="startPoint" type="text">
 	<button onclick="pointSearch();">Вывод</button>
-
-	<script>
-		function pointSearch()
-		{
-			var startPoint = document.getElementById('startPoint').value;
-			var x = startPoint.charAt(0).toUpperCase();
-			var y = Number(startPoint.charAt(1));
-			switch(x){
-				case 'A':
-				x = 1;
-				break;
-				case 'B':
-				x = 2;
-				break;
-				case 'C':
-				x = 3;
-				break;
-				case 'D':
-				x = 4;
-				break;
-				case 'E':
-				x = 5;
-				break;
-				case 'F':
-				x = 6;
-				break;
-				case 'G':
-				x = 7;
-				break;
-				case 'H':
-				x = 8;
-				break;
-			}
-
-			var newPoints = {};
-			newPoints.point1 = [x+1, y+2];
-			newPoints.point2 = [x+2, y+1];
-			newPoints.point3 = [x+2, y-1];
-			newPoints.point4 = [x+1, y-2];
-			newPoints.point5 = [x-1, y-2];
-			newPoints.point6 = [x-2, y-1];
-			newPoints.point7 = [x-2, y+1];
-			newPoints.point8 = [x-1, y+2];
-			var key = "point"+1;
-			var Points = {};
-			for(var i = 1; i < 9; i++){
-				var key = "point"+i;
-				if ((newPoints[key][0]>0 && newPoints[key][1]>0) && (newPoints[key][0]<9 && newPoints[key][1]<9)){
-					document.write("Подходит "+newPoints[key]);
-				}
-			}
-		}
-	</script>
+	<script src="scripts.js"></script>
 </body>
 </html>
