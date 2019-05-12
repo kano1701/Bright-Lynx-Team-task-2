@@ -1,9 +1,12 @@
 function pointSearch()
 {
+	// из input получаем значение точки на шахматной доске
 	var startPoint = document.getElementById('startPoint').value;
+	// получаем значение по оси X
 	var x = startPoint.charAt(0).toUpperCase();
+	// получаем значение по оси Y
 	var y = Number(startPoint.charAt(1));
-
+	// переводим значение по оси Х в числовое
 	switch(x)
 	{
 		case 'A':
@@ -31,7 +34,7 @@ function pointSearch()
 			x = 8;
 			break;
 	}
-
+	//вычисляем значение результирующих точек и заносим их в массив
 	var allPoints = {};
 	allPoints.point1 = [x+1, y+2];
 	allPoints.point2 = [x+2, y+1];
@@ -44,6 +47,7 @@ function pointSearch()
 
 	var str = "";
 
+	// перевожу полученные точки в стандартный вид и сохраняю в строку которую потом верну пользователю 
 	for(var i = 1; i < 9; i++)
 	{
 		var key = "point"+i;
