@@ -1,90 +1,55 @@
-function pointSearch()
-{
+function pointSearch() {
+	points = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F':6, 'G': 7, 'H': 8};
 	// из input получаем значение точки на шахматной доске
 	var startPoint = document.getElementById('startPoint').value;
 	// получаем значение по оси X
 	var x = startPoint.charAt(0).toUpperCase();
 	// получаем значение по оси Y
 	var y = Number(startPoint.charAt(1));
-	// переводим значение по оси Х в числовое
-	switch(x)
-	{
-		case 'A':
-			x = 1;
-			break;
-		case 'B':
-			x = 2;
-			break;
-		case 'C':
-			x = 3;
-			break;
-		case 'D':
-			x = 4;
-			break;
-		case 'E':
-			x = 5;
-			break;
-		case 'F':
-			x = 6;
-			break;
-		case 'G':
-			x = 7;
-			break;
-		case 'H':
-			x = 8;
-			break;
-	}
-	//вычисляем значение результирующих точек и заносим их в массив
-	var allPoints = {};
-	allPoints.point1 = [x+1, y+2];
-	allPoints.point2 = [x+2, y+1];
-	allPoints.point3 = [x+2, y-1];
-	allPoints.point4 = [x+1, y-2];
-	allPoints.point5 = [x-1, y-2];
-	allPoints.point6 = [x-2, y-1];
-	allPoints.point7 = [x-2, y+1];
-	allPoints.point8 = [x-1, y+2];
 
-	var str = "";
+	var allKeys = Object.keys(points);
+	var counterX = 0;
+	var counterY = 0;
 
-	// перевожу полученные точки в стандартный вид и сохраняю в строку которую потом верну пользователю 
-	for(var i = 1; i < 9; i++)
-	{
-		var key = "point"+i;
-		var j = 1;
-
-		if ((allPoints[key][0]>0 && allPoints[key][1]>0) && (allPoints[key][0]<9 && allPoints[key][1]<9))
-		{
-			switch(allPoints[key][0])
-			{
-				case 1:
-					allPoints[key][0] = "A";
-					break;
-				case 2:
-					allPoints[key][0] = "B";
-					break;
-				case 3:
-					allPoints[key][0] = "C";
-					break;
-				case 4:
-					allPoints[key][0] = "D";
-					break;
-				case 5:
-					allPoints[key][0] = "E";
-					break;
-				case 6:
-					allPoints[key][0] = "F";
-					break;
-				case 7:
-					allPoints[key][0] = "G";
-					break;
-				case 8:
-					allPoints[key][0] = "H";
-					break;
-			}
-			str = str + allPoints[key][0] + allPoints[key][1] + " ";
+	for(var i = 0; i < 9; i++) {
+		if(x == allKeys[i]) {
+			counterX++;
+		}
+		if(y == points[allKeys[i]]) {
+			counterY++;
 		}
 	}
 
-	alert(str);
+	if(counterX != 0 && counterY != 0) {
+		var newX = points[x];
+		var allPoints = {};
+
+		allPoints.point1 = [newX+1, y+2];
+		allPoints.point2 = [newX+2, y+1];
+		allPoints.point3 = [newX+2, y-1];
+		allPoints.point4 = [newX+1, y-2];
+		allPoints.point5 = [newX-1, y-2];
+		allPoints.point6 = [newX-2, y-1];
+		allPoints.point7 = [newX-2, y+1];
+		allPoints.point8 = [newX-1, y+2];
+		var strPoint = "";
+
+		for(var i = 1; i < 9; i++) {
+			var key = "point" + i;
+			var j = 1;
+			if ((allPoints[key][0] > 0 && allPoints[key][1] > 0) && (allPoints[key][0] < 9 && allPoints[key][1] < 9)) {
+				allPoints[key][0] = rename(allPoints[key][0]);
+				strPoint = strPoint + allPoints[key][0] + allPoints[key][1] + " ";
+			}
+		}
+		alert("Ваш конь может походить в точки\n"+ strPoint);
+	} else {
+		alert("Неверное значение")
+	}
+}
+
+function rename(name) {
+	// Создаю массив ключей и по новеру получаю нужный ключ
+	var allKeys = Object.keys(points);
+	return allKeys[name - 1];
 }
